@@ -1,24 +1,43 @@
-# README
+## BAO BAB DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false|
+|password|string|null: false|
+|nickname|string|null: false|
+|
+### Association
+- has_many :goods  through :items_user
+has_many :items_user
 
-Things you may want to cover:
+## user_accountテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card_name|string|null: false|
+|expiration_date|string|null: false|
+|security_cord|string|null: false|
+|card_name|string|null: false|
+### Association
+- belongs_to :user
 
-* Ruby version
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|image|string|
+|user_id|integer|null: false, foreign_key: true|
+|items_user|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
 
-* System dependencies
+## orderテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|goods_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :goods
+- belongs_to :user
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
