@@ -1,24 +1,57 @@
-# README
+## BAO BAB DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false|
+|address|string|null: false|
+|phone_number|string|null: false|
+|password|string|null: false|
+|nickname|string|null: false|
+|post_video_id|string|null: false|
+### Association
+- has_many :videos  through :items_user
+- has_many :messages
+- has_many :items_user
 
-Things you may want to cover:
+## user_accountテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card_name|string|null: false|
+|expiration_date|string|null: false|
+|security_cord|string|null: false|
+|card_name|string|null: false|
+### Association
+- belongs_to :user
 
-* Ruby version
+## videosテーブル
+|Column|Type|Options|
+|------|----|-------|
+|title|text|null: false|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
-* System dependencies
+### Association
+- belongs_to :user
 
-* Configuration
+## messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|text|
+|user_id|integer|null: false, foreign_key: true|
+|video_id|integer|null: false, foreign_key: true|
 
-* Database creation
+### Association
+- belongs_to :user
+- belongs_to :video
 
-* Database initialization
+## orderテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|goods_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :goods
+- belongs_to :user
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
