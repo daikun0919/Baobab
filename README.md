@@ -10,8 +10,9 @@
 |password|string|null: false|
 |nickname|string|null: false|
 ### Association
-- has_many :video  through :items_user
-has_many :items_user
+- has_many :videos  through :items_user
+- has_many :messages
+- has_many :items_user
 
 ## user_accountテーブル
 |Column|Type|Options|
@@ -26,10 +27,22 @@ has_many :items_user
 ## videosテーブル
 |Column|Type|Options|
 |------|----|-------|
+|title|text|null: false|
 |text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+## messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|text|
+|user_id|integer|null: false, foreign_key: true|
+|video_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :video
 
 ## orderテーブル
 |Column|Type|Options|
