@@ -9,6 +9,7 @@
 |phone_number|string|null: false|
 |password|string|null: false|
 |nickname|string|null: false|
+|post_video_id|string|null: false|
 ### Association
 - has_many :videos  through :items_user
 - has_many :messages
@@ -30,6 +31,7 @@
 |title|text|null: false|
 |text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
+
 ### Association
 - belongs_to :user
 
