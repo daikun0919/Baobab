@@ -5,11 +5,12 @@
 |------|----|-------|
 |name|string|null: false|
 |email|string|null: false|
+|address|string|null: false|
+|phone_number|string|null: false|
 |password|string|null: false|
 |nickname|string|null: false|
-|
 ### Association
-- has_many :goods  through :items_user
+- has_many :video  through :items_user
 has_many :items_user
 
 ## user_accountテーブル
@@ -22,13 +23,11 @@ has_many :items_user
 ### Association
 - belongs_to :user
 
-## itemsテーブル
+## videosテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|image|string|
 |user_id|integer|null: false, foreign_key: true|
-|items_user|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
